@@ -134,8 +134,10 @@ function initCheckboxRadioStyle() {
   function applyCheckboxRadioStyle(style) {
     boxsheet.attr("href", getCheckboxURL(style));
     var sel = $("input[type='radio'],input[type='checkbox']");
-    sel.parent().removeClass();
-    sel.parent().addClass("icheck-" + style);
+    if (!sel.parent().hasClass("btn")) {
+      sel.parent().removeClass();
+      sel.parent().addClass("icheck-" + style);
+    }
   }
 
   // Read from local storage, initialize if needed
